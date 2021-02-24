@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 import "controls"
 
 Window {
@@ -9,6 +10,10 @@ Window {
     height: 580
     visible: true
     color: "#00000000"
+
+    // remove title bar
+    flags: Qt.Window | Qt.FramelessWindowHint
+
     title: qsTr("Hello World")
 
     Rectangle {
@@ -51,6 +56,7 @@ Window {
                 anchors.topMargin: 0
 
                 ToggleButton {
+                    onClicked: animationMenu.running = true
                 }
 
 
@@ -109,13 +115,20 @@ Window {
                     anchors.leftMargin: 70
                     anchors.topMargin: 0
 
+                    DragHandler{
+                        onActiveChanged: if(active){
+                                            mainWindow.startSystemMove()
+                                         }
+                    }
+
                     Image {
                         id: iconApp
-                        width: 28
+                        width: 26
+                        height: 26
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        source: "qrc:/qtquickplugin/images/template_image.png"
+                        source: "../images/svg_images/icon_app_top.svg"
                         anchors.bottomMargin: 0
                         anchors.leftMargin: 5
                         anchors.topMargin: 0
@@ -180,9 +193,19 @@ Window {
                     anchors.left: parent.left
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 0
                     anchors.topMargin: 0
+
+                    PropertyAnimation{
+                        id: animationMenu
+                        target: leftMenu
+                        property: "width"
+                        to: if(leftMenu.width == 70) return 200; else return 70
+                        duration: 1000
+                        easing.type: Easing.OutBounce
+                    }
 
                     Column {
                         id: column
@@ -196,10 +219,40 @@ Window {
                         anchors.bottomMargin: 90
                         anchors.topMargin: 0
 
-                        Button {
-                            id: button
-                            text: qsTr("Button")
+                        LeftMenuBtn {
+                            id: btnHome
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                            isActiveMenu: true
+                            font.pointSize: 10
                         }
+
+                        LeftMenuBtn {
+                            id: btnHome1
+                            width: leftMenu.width
+                            text: qsTr("OPen")
+                            btnIconSource: "../images/svg_images/open_icon.svg"
+                            font.pointSize: 10
+                        }
+
+                        LeftMenuBtn {
+                            id: btnHome2
+                            width: leftMenu.width
+                            text: qsTr("Save")
+                            btnIconSource: "../images/svg_images/save_icon.svg"
+                            font.pointSize: 10
+                        }
+                    }
+
+                    LeftMenuBtn {
+                        id: btnHome3
+                        width: leftMenu.width
+                        text: qsTr("Settings")
+                        anchors.bottom: parent.bottom
+                        btnIconSource: "../images/svg_images/settings_icon.svg"
+                        anchors.bottomMargin: 25
+                        isActiveMenu: true
+                        font.pointSize: 10
                     }
                 }
 
@@ -247,6 +300,17 @@ Window {
             }
         }
     }
+    DropShadow{
+        anchors.fill: bg
+        horizontalOffset: 0
+        verticalOffset: 0
+        radius: 10
+        samples: 16
+        color: "#80000000"
+        source: bg
+        z:0
+    }
+
 }
 
 
