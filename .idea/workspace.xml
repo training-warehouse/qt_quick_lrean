@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ea0f31f3-861a-4ebb-bc8f-0e9f5b3906ea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/qt_quick_lrean.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qml/controls/CustomTextField.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qml/controls/customButton.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qml/pages/homePage.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qml/pages/settingsPage.qml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.pyproject" beforeDir="false" afterPath="$PROJECT_DIR$/main.pyproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.pyproject.user" beforeDir="false" afterPath="$PROJECT_DIR$/main.pyproject.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qml/main.qml" beforeDir="false" afterPath="$PROJECT_DIR$/qml/main.qml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ot4K9FdE7R3oZNnWnAsXyVzMMe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea0f31f3-861a-4ebb-bc8f-0e9f5b3906ea" name="Default Changelist" comment="" />
+      <created>1614092485703</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614092485703</updated>
+      <workItem from="1614092487698" duration="151000" />
+      <workItem from="1614175198909" duration="133000" />
+      <workItem from="1614265418220" duration="544000" />
+    </task>
+    <task id="LOCAL-00001" summary="完成左边菜单栏及动画">
+      <created>1614175311461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614175311461</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成左边菜单栏及动画" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成左边菜单栏及动画" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2478" y="131" key="CommitChangelistDialog2" timestamp="1614175310713">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2478" y="131" key="CommitChangelistDialog2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614175310713" />
+    <state x="2472" y="260" key="Vcs.Push.Dialog.v2" timestamp="1614175313213">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2472" y="260" key="Vcs.Push.Dialog.v2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614175313213" />
+  </component>
+</project>

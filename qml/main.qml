@@ -8,13 +8,65 @@ Window {
     id: mainWindow
     width: 1000
     height: 580
+    minimumWidth: 800
+    minimumHeight: 500
     visible: true
     color: "#00000000"
+    title: qsTr("Hello World")
 
     // remove title bar
     flags: Qt.Window | Qt.FramelessWindowHint
 
-    title: qsTr("Hello World")
+    property int windowStatus: 0
+    property int windowMargin: 10
+
+    QtObject {
+        id: internal
+
+        function resetResizeBorders(){
+            resizeLeft.visible = true
+            resizeRight.visible = true
+            resizeBottom.visible = true
+            resizeWindow.visible = true
+        }
+
+        function maximizeRestore(){
+            if(windowStatus == 0){
+                windowStatus = 1
+                windowMargin = 0
+                btnMaximize.btnIconSource = '../images/svg_images/restore_icon.svg'
+                resizeLeft.visible = false
+                resizeRight.visible = false
+                resizeBottom.visible = false
+                resizeWindow.visible = false
+                mainWindow.showMaximized()
+            }else{
+                windowStatus = 0
+                windowMargin = 10
+                btnMaximize.btnIconSource = '../images/svg_images/maximize_icon.svg'
+                internal.resetResizeBorders()
+                mainWindow.showNormal()
+            }
+        }
+
+        function ifMaximizedWindowRestore(){
+            if(windowStatus == 0){
+                mainWindow.showNormal()
+                windowStatus = 0
+                windowMargin = 10
+                internal.resetResizeBorders()
+                btnMaximize.btnIconSource = '../images/svg_images/maximize_icon.svg'
+            }
+        }
+
+        function restoreMargins(){
+            windowStatus = 0
+            windowMargin = 10
+            internal.resetResizeBorders()
+            btnMaximize.btnIconSource = '../images/svg_images/maximize_icon.svg'
+        }
+    }
+
 
     Rectangle {
         id: bg
@@ -27,10 +79,11 @@ Window {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
+        anchors.rightMargin: windowMargin
+        anchors.leftMargin: windowMargin
+        anchors.bottomMargin: windowMargin
+        anchors.topMargin: windowMargin
+        z: 1
 
         Rectangle {
             id: appContainer
@@ -81,6 +134,7 @@ Window {
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Arial"
                         anchors.bottomMargin: 0
                         anchors.rightMargin: 300
                         anchors.leftMargin: 10
@@ -97,6 +151,7 @@ Window {
                         anchors.bottom: parent.bottom
                         horizontalAlignment: Text.AlignRight
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Arial"
                         anchors.topMargin: 0
                         anchors.leftMargin: 0
                         anchors.bottomMargin: 0
@@ -117,7 +172,8 @@ Window {
 
                     DragHandler{
                         onActiveChanged: if(active){
-                                            mainWindow.startSystemMove()
+                                             mainWindow.startSystemMove()
+                                             internal.ifMaximizedWindowRestore()
                                          }
                     }
 
@@ -145,6 +201,7 @@ Window {
                         anchors.bottom: parent.bottom
                         horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Arial"
                         font.pointSize: 12
                         anchors.leftMargin: 5
                     }
@@ -160,17 +217,25 @@ Window {
                     anchors.rightMargin: 0
                     anchors.topMargin: 0
 
-                    TopBarButton{ id: btnMinimize}
+                    TopBarButton{
+                        id: btnMinimize
+                        onClicked: {
+                            mainWindow.showMinimized()
+                            internal.restoreMargins()
+                        }
+                    }
 
                     TopBarButton {
                         id: btnMaximize
                         btnIconSource: "../images/svg_images/maximize_icon.svg"
+                        onClicked: internal.maximizeRestore()
                     }
 
                     TopBarButton {
                         id: btnClose
                         btnColorClicked: "#ff007f"
                         btnIconSource: "../images/svg_images/close_icon.svg"
+                        onClicked: mainWindow.close()
                     }
                 }
             }
@@ -202,9 +267,9 @@ Window {
                         id: animationMenu
                         target: leftMenu
                         property: "width"
-                        to: if(leftMenu.width == 70) return 200; else return 70
+                        to: if(leftMenu.width == 70) return 250; else return 70
                         duration: 1000
-                        easing.type: Easing.OutBounce
+                        easing.type: Easing.InOutQuint
                     }
 
                     Column {
@@ -225,10 +290,16 @@ Window {
                             text: qsTr("Home")
                             isActiveMenu: true
                             font.pointSize: 10
+                            onClicked: {
+                                btnHome.isActiveMenu = true
+                                btnSettings.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
+//                                pagesView.setSource(Qt.resolvedUrl("pages/homePage.qml"))
+                            }
                         }
 
                         LeftMenuBtn {
-                            id: btnHome1
+                            id: btnOpen
                             width: leftMenu.width
                             text: qsTr("OPen")
                             btnIconSource: "../images/svg_images/open_icon.svg"
@@ -236,7 +307,7 @@ Window {
                         }
 
                         LeftMenuBtn {
-                            id: btnHome2
+                            id: btnSave
                             width: leftMenu.width
                             text: qsTr("Save")
                             btnIconSource: "../images/svg_images/save_icon.svg"
@@ -245,14 +316,19 @@ Window {
                     }
 
                     LeftMenuBtn {
-                        id: btnHome3
+                        id: btnSettings
                         width: leftMenu.width
                         text: qsTr("Settings")
                         anchors.bottom: parent.bottom
                         btnIconSource: "../images/svg_images/settings_icon.svg"
                         anchors.bottomMargin: 25
-                        isActiveMenu: true
                         font.pointSize: 10
+                        onClicked: {
+                            btnHome.isActiveMenu = false
+                            btnSettings.isActiveMenu = true
+                            stackView.push(Qt.resolvedUrl("pages/settingsPage.qml"))
+//                            pagesView.setSource(Qt.resolvedUrl("pages/settingsPage.qml"))
+                        }
                     }
                 }
 
@@ -264,10 +340,30 @@ Window {
                     anchors.right: parent.right
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.leftMargin: 0
                     anchors.rightMargin: 0
                     anchors.bottomMargin: 25
                     anchors.topMargin: 0
+                    z:3
+                    // 划入效果
+                    StackView {
+                        id: stackView
+                        anchors.fill: parent
+                        initialItem: Qt.resolvedUrl("pages/homePage.qml")
+                    }
+                    // 直接加载效果
+//                    Loader{
+//                        id:pageHome
+//                        anchors.fill: parent
+//                        source: Qt.resolvedUrl("pages/homePage.qml")
+//                    }
+//                    Loader{
+//                        id:pageSettings
+//                        anchors.fill: parent
+//                        source: Qt.resolvedUrl("pages/settingsPage.qml")
+//                        visible: false
+//                    }
                 }
 
                 Rectangle {
@@ -282,6 +378,7 @@ Window {
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
 
+
                     Label {
                         id: labelTopInfo1
                         color: "#737982"
@@ -291,10 +388,47 @@ Window {
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
                         verticalAlignment: Text.AlignVCenter
+                        font.family: "Arial"
                         anchors.topMargin: 0
                         anchors.leftMargin: 10
                         anchors.bottomMargin: 0
                         anchors.rightMargin: 30
+                    }
+
+
+                    MouseArea {
+                        id: resizeWindow
+                        x: 883
+                        y: 0
+                        width: 25
+                        height: 25
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        anchors.rightMargin: 0
+                        anchors.bottomMargin: 0
+                        cursorShape: Qt.SizeFDiagCursor
+
+                        DragHandler{
+                            target: null
+                            onActiveChanged: if(active){
+                                                 mainWindow.startSystemResize(Qt.RightEdge|Qt.BottomEdge)
+                                             }
+                        }
+
+                        Image {
+                            id: resizeImage
+                            width: 16
+                            height: 16
+                            opacity: 0.5
+                            anchors.fill: parent
+                            source: "../images/svg_images/resize_icon.svg"
+                            anchors.leftMargin: 5
+                            anchors.topMargin: 5
+                            sourceSize.height: 16
+                            sourceSize.width: 16
+                            fillMode: Image.PreserveAspectFit
+                            antialiasing: false
+                        }
                     }
                 }
             }
@@ -310,6 +444,64 @@ Window {
         source: bg
         z:0
     }
+
+    MouseArea {
+        id: resizeLeft
+        y: 10
+        width: 10
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active){mainWindow.startSystemResize(Qt.LeftEdge)}
+        }
+    }
+
+    MouseArea {
+        id: resizeRight
+        y: 10
+        width: 10
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active){mainWindow.startSystemResize(Qt.RightEdge)}
+        }
+    }
+
+
+    MouseArea {
+        id: resizeBottom
+        y: 570
+        height: 10
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 0
+        cursorShape: Qt.SizeVerCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active){mainWindow.startSystemResize(Qt.BottomEdge)}
+        }
+    }
+
+
+
 
 }
 
