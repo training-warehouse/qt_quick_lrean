@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea0f31f3-861a-4ebb-bc8f-0e9f5b3906ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/qt_quick_lrean.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qml/controls/CustomTextField.qml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qml/controls/customButton.qml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qml/pages/homePage.qml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qml/pages/settingsPage.qml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.pyproject" beforeDir="false" afterPath="$PROJECT_DIR$/main.pyproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.pyproject.user" beforeDir="false" afterPath="$PROJECT_DIR$/main.pyproject.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qml/main.qml" beforeDir="false" afterPath="$PROJECT_DIR$/qml/main.qml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +47,8 @@
       <updated>1614092485703</updated>
       <workItem from="1614092487698" duration="151000" />
       <workItem from="1614175198909" duration="133000" />
-      <workItem from="1614265418220" duration="544000" />
+      <workItem from="1614265418220" duration="589000" />
+      <workItem from="1614344427963" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="完成左边菜单栏及动画">
       <created>1614175311461</created>
@@ -72,7 +57,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614175311461</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成页面切换">
+      <created>1614265981041</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614265981041</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,16 +72,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成左边菜单栏及动画" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成左边菜单栏及动画" />
+    <MESSAGE value="完成页面切换" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成页面切换" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2478" y="131" key="CommitChangelistDialog2" timestamp="1614175310713">
+    <state x="2478" y="131" key="CommitChangelistDialog2" timestamp="1614349556344">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2478" y="131" key="CommitChangelistDialog2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614175310713" />
-    <state x="2472" y="260" key="Vcs.Push.Dialog.v2" timestamp="1614175313213">
+    <state x="2478" y="131" key="CommitChangelistDialog2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614349556344" />
+    <state x="2472" y="260" key="Vcs.Push.Dialog.v2" timestamp="1614265996840">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2472" y="260" key="Vcs.Push.Dialog.v2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614175313213" />
+    <state x="2472" y="260" key="Vcs.Push.Dialog.v2/0.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1614265996840" />
   </component>
 </project>

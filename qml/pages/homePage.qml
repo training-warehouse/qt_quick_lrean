@@ -29,6 +29,13 @@ Item {
                 font.family: "Arial"
                 anchors.verticalCenterOffset: 0
                 placeholderText: "Type your name"
+
+                Keys.onEnterPressed: {
+                    backend.welcomeText(textField.text)
+                }
+                Keys.onReturnPressed: {
+                    backend.welcomeText(textField.text)
+                }
             }
 
             CustomButton{
@@ -41,6 +48,10 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: "Arial"
                 anchors.verticalCenterOffset: 0
+
+                onClicked: {
+                    backend.welcomeText(textField.text)
+                }
            }
         }
 
@@ -68,6 +79,33 @@ Item {
                 font.family: "Arial"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
+            Label {
+                id: label1
+                x: 248
+                y: 70
+                width: 508
+                height: 39
+                color: "#ffffff"
+                text: qsTr("Label")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 12
+                font.family: "Arial"
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
+    }
+
+    Connections{
+        target: backend
+        function onSetName(name){
+            label.text = name
+        }
+
+        function onPrintTime(time){
+
+            label1.text = time
         }
     }
 

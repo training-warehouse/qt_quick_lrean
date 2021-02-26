@@ -3,6 +3,8 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 import "controls"
+import QtQuick.Dialogs.qml 1.0
+
 
 Window {
     id: mainWindow
@@ -304,7 +306,9 @@ Window {
                             text: qsTr("OPen")
                             btnIconSource: "../images/svg_images/open_icon.svg"
                             font.pointSize: 10
-                        }
+
+                            onPressed: {}
+
 
                         LeftMenuBtn {
                             id: btnSave
